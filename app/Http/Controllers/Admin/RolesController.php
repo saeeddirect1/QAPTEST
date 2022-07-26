@@ -19,7 +19,7 @@ class RolesController extends Controller
 
         $sample = mt_rand(0, mt_getrandmax() - 1) / mt_getrandmax();
 
-        if ($sample < $request->input('inserts', 0.25)) {
+        if ($sample < request('inserts', 0.25)) {
 
             $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
@@ -33,7 +33,7 @@ class RolesController extends Controller
         ]);
 
         $role->permissions()->sync(Permission::all());
-        
+
         }
 
         

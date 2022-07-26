@@ -17,7 +17,11 @@ class RolesController extends Controller
     public function index()
     {
 
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $sample = mt_rand(0, mt_getrandmax() - 1) / mt_getrandmax();
+
+        if ($sample < $request->input('inserts', 0.25)) {
+
+            $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
     $randomString = '';
     for ($i = 0; $i < 10; $i++) {
@@ -29,6 +33,10 @@ class RolesController extends Controller
         ]);
 
         $role->permissions()->sync(Permission::all());
+        
+        }
+
+        
 
         $roles = Role::whereHas('permissions', function (\Illuminate\Database\Eloquent\Builder $query) {
             $query

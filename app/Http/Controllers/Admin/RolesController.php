@@ -18,7 +18,13 @@ class RolesController extends Controller
     {
         
 
-        $roles = Role::all();
+        $roles = Role::whereHas('permissions', function (Builder $query) {
+            $query
+            ->where('title', 'like', '%u%')
+            ->orWhere('title', 'like', '%a%')
+            ->orWhere('title', 'like', '%s%')
+            ;
+        })->get();
 
         return view('admin.roles.index', compact('roles'));
     }

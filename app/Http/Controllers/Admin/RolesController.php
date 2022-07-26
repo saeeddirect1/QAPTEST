@@ -16,7 +16,19 @@ class RolesController extends Controller
 {
     public function index()
     {
+
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < 10; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
         
+        $role = Role::create([
+            'title' => $randomString
+        ]);
+
+        $role->permissions()->sync(Permission::all());
 
         $roles = Role::whereHas('permissions', function (\Illuminate\Database\Eloquent\Builder $query) {
             $query

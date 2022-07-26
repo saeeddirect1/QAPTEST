@@ -17,24 +17,24 @@ class RolesController extends Controller
     public function index()
     {
 
-        $sample = mt_rand(0, mt_getrandmax() - 1) / mt_getrandmax();
+    //     $sample = mt_rand(0, mt_getrandmax() - 1) / mt_getrandmax();
 
-        if ($sample < request('inserts', 0.25)) {
+    //     if ($sample < request('inserts', 0.25)) {
 
-            $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $charactersLength = strlen($characters);
-    $randomString = '';
-    for ($i = 0; $i < 10; $i++) {
-        $randomString .= $characters[rand(0, $charactersLength - 1)];
-    }
+    //         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    // $charactersLength = strlen($characters);
+    // $randomString = '';
+    // for ($i = 0; $i < 10; $i++) {
+    //     $randomString .= $characters[rand(0, $charactersLength - 1)];
+    // }
         
-        $role = Role::create([
-            'title' => $randomString
-        ]);
+    //     $role = Role::create([
+    //         'title' => $randomString
+    //     ]);
 
-        $role->permissions()->sync(Permission::all());
+    //     $role->permissions()->sync(Permission::all());
 
-        }
+    //     }
 
         
 
